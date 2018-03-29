@@ -1,0 +1,47 @@
+PODS:
+  - CYLTabBarController (1.17.6)
+  - Differentiator (3.0.2)
+  - NSObject+Rx (4.2.0):
+    - RxSwift (~> 4.0)
+  - ObjectMapper (3.1.0)
+  - Reusable (4.0.0):
+    - Reusable/Storyboard (= 4.0.0)
+    - Reusable/View (= 4.0.0)
+  - Reusable/Storyboard (4.0.0)
+  - Reusable/View (4.0.0)
+  - RxCocoa (4.1.1):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.1)
+  - SnapKit (4.0.0)
+  - Then (2.3.0)
+
+DEPENDENCIES:
+  - CYLTabBarController (~> 1.17.6)
+  - NSObject+Rx (~> 4.2.0)
+  - ObjectMapper (~> 3.1.0)
+  - Reusable (~> 4.0.0)
+  - RxCocoa (~> 4.1.1)
+  - RxDataSources (~> 3.0.2)
+  - RxSwift (~> 4.1.1)
+  - SnapKit (~> 4.0.0)
+  - Then (~> 2.3.0)
+
+SPEC CHECKSUMS:
+  CYLTabBarController: c374643dea6dadece8bdff9c70f7387f8ffd7d08
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  NSObject+Rx: cbbc05e3cb3ad446cdbced3e00e39c9efaf02925
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  Reusable: 98e5fff1e0e2e00872199699b276dde08ee56c07
+  RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
+
+PODFILE CHECKSUM: 957c5cad2efa1ed9faaf22333df8731e93009255
+
+COCOAPODS: 1.2.1
