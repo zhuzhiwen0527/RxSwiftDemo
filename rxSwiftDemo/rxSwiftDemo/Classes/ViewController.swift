@@ -13,95 +13,131 @@ import Then
 import SnapKit
 import NSObject_Rx
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         navigationItem.title = "RxSwiftDemo"
-
+        
         createUI()
-      /*
+        /*
          Observable : 可被观察的，事件源
          Observer : 观察者，观察者需要订阅Observable，才能受到其发出的事件
          DisposeBag : 相当于iOS中的ARC，会在适当的时候销毁观察者，自动去释放资源
          */
-//        rxObservable()
+        //        rxObservable()
         
         
         /*
          Subjects
          Subjet是observable和Observer之间的桥梁，一个Subject既可以充当Obserable也可以充当Observer，即它可以发出事件，也可以监听事件
          */
-//        rxSubjects()
+        //        rxSubjects()
         /*
          事件流联合操作
-          startWith merge zip combineLatest switchLatest
+         startWith merge zip combineLatest switchLatest
          */
-//        rxUniteOperation()
+        //        rxUniteOperation()
         /*
-          其他 事件流操作
+         
          */
-//        rxOther()
+                rxOperators()
+        
+       
+        
+        
     }
     
-        func createUI()  {
+    func createUI()  {
+        
+        let lab = UILabel().then {
+            $0.text = "这是一个RxSwiftDemo"
+            $0.textColor = UIColor.blue
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.backgroundColor = UIColor.gray
+            $0.textAlignment = NSTextAlignment.center
+            view.addSubview($0)
+            $0.snp.makeConstraints({ (maker) in
+                maker.top.equalTo(view).offset(64)
+                maker.left.equalTo(view).offset(20)
+                maker.right.equalTo(view).offset(-20)
+                maker.height.equalTo(50)
+            })
+        }
+        
+        let firstTextField = UITextField().then {
+            $0.placeholder = "first"
+            $0.backgroundColor = UIColor.orange
+            view.addSubview($0)
             
-            let lab = UILabel().then {
-                $0.text = "这是一个RxSwiftDemo"
-                $0.textColor = UIColor.blue
-                $0.font = UIFont.systemFont(ofSize: 15)
-                $0.backgroundColor = UIColor.gray
-                $0.textAlignment = NSTextAlignment.center
-                view.addSubview($0)
-                $0.snp.makeConstraints({ (maker) in
-                    maker.top.equalTo(view).offset(64)
-                    maker.left.equalTo(view).offset(20)
-                    maker.right.equalTo(view).offset(-20)
-                    maker.height.equalTo(50)
-                })
-            }
-            
-            let firstTextField = UITextField().then {
-                $0.placeholder = "first"
-                $0.backgroundColor = UIColor.orange
-                view.addSubview($0)
+            $0.snp.makeConstraints({ (make) in
                 
-                $0.snp.makeConstraints({ (make) in
-                    
-                    make.left.right.equalTo(lab)
-                    make.top.equalTo(lab.snp.bottom).offset(5)
-                    make.height.equalTo(30)
-                })
-            }
+                make.left.right.equalTo(lab)
+                make.top.equalTo(lab.snp.bottom).offset(5)
+                make.height.equalTo(30)
+            })
+        }
+        
+        let secondTextField = UITextField().then {
+            $0.placeholder = "second"
+            $0.backgroundColor = UIColor.orange
+            view.addSubview($0)
             
-            let secondTextField = UITextField().then {
-                $0.placeholder = "second"
-                $0.backgroundColor = UIColor.orange
-                view.addSubview($0)
+            $0.snp.makeConstraints({ (make) in
                 
-                $0.snp.makeConstraints({ (make) in
-                    
-                    make.left.right.equalTo(firstTextField)
-                    make.top.equalTo(firstTextField.snp.bottom).offset(5)
-                    make.height.equalTo(30)
-                })
-            }
-            let firstObservable = firstTextField.rx.text.map { (text) -> String in
-                text! + "first"
-            }
-            let secondObservable = secondTextField.rx.text.filter {
-                $0!.count >= 5
-            }
-            
-            
-            Observable.combineLatest(firstObservable, secondObservable) {
-                "\($0)+\($1) ,\($0.count)+\($1?.count)"
-                }.subscribe { (event) in
-                    print(event)
+                make.left.right.equalTo(firstTextField)
+                make.top.equalTo(firstTextField.snp.bottom).offset(5)
+                make.height.equalTo(30)
+            })
+        }
+        
+        let btn = UIButton().then {
+            $0.backgroundColor = UIColor.red
+            view.addSubview($0)
+            $0.snp.makeConstraints({
+                
+                $0.top.equalTo(secondTextField.snp.bottom).offset(5)
+                $0.left.right.equalTo(secondTextField)
+                $0.height.equalTo(40)
+            })
+        }
+        
+        let firstObservable = firstTextField.rx.text.map { (text) -> String in
+            text! + "first"
+        }
+        //加一个orEmpty 就可以不用强行解包
+        let secondObservable = secondTextField.rx.text.orEmpty.filter {
+            $0.count >= 5
+        }
+        
+        
+        Observable.combineLatest(firstObservable, secondObservable) {
+            "\($0)+\( $1) ,\($0.count)+\($1.count)"
+            }.subscribe { (event) in
+                print(event)
             }.disposed(by: rx.disposeBag)
+        
+        
+        //kvo
+        lab.rx.observeWeakly(String.self, "text").subscribe(onNext: { (text) in
+            print("kvo+\(String(describing: text))")
+        }).disposed(by: rx.disposeBag)
+        
+        
+        //Rxcocoa Driver
+        firstTextField.rx.text.orEmpty.asDriver().drive(lab.rx.text).disposed(by: rx.disposeBag)
+        
+        firstTextField.rx.text.asDriver().drive(btn.rx.title()).disposed(by: rx.disposeBag)
+        
+        //点击事件
+        
+        btn.rx.tap.subscribe(onNext: { (sender) in
+            print(sender)
             
-                                                                                                                                                                                                                                                                   
-             firstTextField.rx.text.asDriver().drive(lab.rx.text).disposed(by: rx.disposeBag)
+        }).disposed(by: rx.disposeBag)
+        
+
+        
         
     }
     
@@ -260,7 +296,7 @@ class ViewController: UIViewController {
         variable.value = "C"
         variable.value = "D"
         
-    
+        
         
     }
     
@@ -268,7 +304,7 @@ class ViewController: UIViewController {
         
         //startWith   在发出事件消息之前，先发出某个特定的事件消息。
         Observable.of(1,2).startWith(3).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
-
+        
         //merge  将多个Observable流合成单个Observable流，然后任何一个Observable发出事件都能被接收到
         
         let sub1 = PublishSubject<String>()
@@ -333,10 +369,10 @@ class ViewController: UIViewController {
         v.value = bs2
         bs1.onNext("3")
         bs2.onNext("B")
- 
+        
     }
     
-    func rxOther() {
+    func rxOperators() {
         /*
          map flatMap
          map、flatMap用于把流内容映射成新的内容，但flatMap用于其内容还是流事件
@@ -344,7 +380,7 @@ class ViewController: UIViewController {
         Observable.of(1,2,3).map { (num) -> Int in
             num + 10
             }.subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
-     
+        
         
         let bs1 = BehaviorSubject(value: "A")
         let bs2 = BehaviorSubject(value: "B")
@@ -353,8 +389,8 @@ class ViewController: UIViewController {
         variable.value = bs2
         
         /*
-        variable.asObservable().map({$0}).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
-        variable.value = bs2
+         variable.asObservable().map({$0}).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
+         variable.value = bs2
          */
         
         //scan就是给一个初始化的数，然后不断的拿前一个结果和最新的值进行处理操作。
@@ -372,7 +408,7 @@ class ViewController: UIViewController {
             
             num >= 10
             }.subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
-       
+        
         //distinctUntilChanged   监听的值发生改变时调用
         Observable.of(10,20,20,9,9,9,6,7).distinctUntilChanged().subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
         
@@ -400,9 +436,9 @@ class ViewController: UIViewController {
         sequence1.onNext(20)
         
         //忽略前面几次事件
-         Observable.of("A","B","C","D","E").skip(2).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
+        Observable.of("A","B","C","D","E").skip(2).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
         //忽略满足条件的
-         Observable.of(20,29,3,8,17,15).skipWhile({$0 > 10}).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
+        Observable.of(20,29,3,8,17,15).skipWhile({$0 > 10}).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
         //满足条件的都被取消，传入的闭包同skipWhile有点区别而已  根据判断信号顺序index
         Observable.of(10,11,12,13,14,15).skipWhileWithIndex { (element, index) -> Bool in
             index < 3
@@ -423,7 +459,7 @@ class ViewController: UIViewController {
         //toArray  将sequence转换成一个array，并转换成单一事件信号，然后结束
         Observable.range(start: 1, count: 5).toArray().subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
         
-       //用一个初始值，对事件数据进行累计操作。reduce接受一个初始值，和一个操作符号
+        //用一个初始值，对事件数据进行累计操作。reduce接受一个初始值，和一个操作符号
         Observable.of(1,10,20).reduce(5, accumulator: +).subscribe(onNext: {print($0)}).disposed(by: rx.disposeBag)
         
         //concat会把多个sequence和并为一个sequence,只有前一个sequence发出了completed事件，才会开始下一个sequence的事件，否则下一个发出的事件将全被忽略，但最后发出的那个事件不会被忽略，该事件会在前一个sequence发出completed事件后被接收。
@@ -444,13 +480,18 @@ class ViewController: UIViewController {
         subject1.onCompleted()
         subject2.onNext(13)
         
-     
+        _ =  Observable<Int>.interval(1, scheduler: MainScheduler.instance).subscribe(onNext: {
+            
+            print($0)
+            
+        })
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
