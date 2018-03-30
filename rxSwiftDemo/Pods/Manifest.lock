@@ -18,6 +18,7 @@ PODS:
   - RxSwift (4.1.1)
   - SnapKit (4.0.0)
   - Then (2.3.0)
+  - Validator (3.0)
 
 DEPENDENCIES:
   - CYLTabBarController (~> 1.17.6)
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - RxSwift (~> 4.1.1)
   - SnapKit (~> 4.0.0)
   - Then (~> 2.3.0)
+  - Validator
 
 SPEC CHECKSUMS:
   CYLTabBarController: c374643dea6dadece8bdff9c70f7387f8ffd7d08
@@ -41,7 +43,8 @@ SPEC CHECKSUMS:
   RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
+  Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: 957c5cad2efa1ed9faaf22333df8731e93009255
+PODFILE CHECKSUM: e864022fb10422fa66e0472e7f53c874a2538244
 
 COCOAPODS: 1.2.1
