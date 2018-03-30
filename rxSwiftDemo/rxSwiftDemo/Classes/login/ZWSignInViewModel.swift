@@ -8,45 +8,37 @@
 
 import RxCocoa
 import RxSwift
+import Validator
 
-enum ValidationResult {
-    case ok(message:String)
-    case empty
-    case validating
-    case failed(message:String)
-}
-
-extension ValidationResult{
-    var isValid: Bool {
-        switch self {
-        case .ok:
-            return true
-        default:
-            return false
-        }
-        
-    }
-    
-}
 
 class ZWSignInViewModel {
     
     let validatedUsername:Driver<ValidationResult>
     let validatedPassword:Driver<ValidationResult>
-    let validaredPasswordRepeated:Driver<ValidationResult>
-    
-    let signInEnabled :Driver<Bool>
-    
-    let signedIn:Driver<Bool>
-    
-    let signingIn:Driver<Bool>
+
+//
+//    let signInEnabled :Driver<Bool>
+//
+//    let signedIn:Driver<Bool>
+//
+//    let signingIn:Driver<Bool>
     
     init(input:(username:Driver<String>,password:Driver<String>)) {
         
-        validatedUsername = input.username.map({ (username)  in
-            return Variable( username.count > 5)
-           
+        
+        validatedUsername = input.username.map({ usernameString  in
+            
+            let usernameRule = ValidationRuleLength(min: 5, max: 20, failureError: ValidationError(message:"InValid Username"))
+            return usernameString.validate(rule: usernameRule)
         })
+        
+        validatedPassword = input.password.map({ passwd in
+            let passwdRule = ValidationRuleLength(min: 5, max: 20, failureError: ValidationError(message:"InValid Username"))
+            return passwd.validate(rule: passwdRule)
+        })
+        
     }
+
     
 }
+

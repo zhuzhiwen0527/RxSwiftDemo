@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */; };
+		184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */; };
 		187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090B3206B8C3D00431013 /* AppDelegate.swift */; };
 		187090B6206B8C3D00431013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090B5206B8C3D00431013 /* ViewController.swift */; };
 		187090B9206B8C3D00431013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187090B7206B8C3D00431013 /* Main.storyboard */; };
@@ -17,7 +18,6 @@
 		187090D4206B8C3D00431013 /* rxSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090D3206B8C3D00431013 /* rxSwiftDemoUITests.swift */; };
 		B77387D4A9C87B9BC9DE0525 /* Pods_rxSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B45D9018DFC31A303822E3 /* Pods_rxSwiftDemo.framework */; };
 		ED04C0BC206E070200A50813 /* ZWLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */; };
-		ED04C0BE206E258D00A50813 /* ZWSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04C0BD206E258D00A50813 /* ZWSignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWMainTabBarViewController.swift; sourceTree = "<group>"; };
+		184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWSignInViewModel.swift; sourceTree = "<group>"; };
 		187090B0206B8C3D00431013 /* rxSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187090B3206B8C3D00431013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187090B5206B8C3D00431013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		7EB93250AF533F78448E762E /* Pods-rxSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxSwiftDemo/Pods-rxSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DE92C2A5540CE8D4832D5558 /* Pods-rxSwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxSwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxSwiftDemo/Pods-rxSwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWLoginViewController.swift; sourceTree = "<group>"; };
-		ED04C0BD206E258D00A50813 /* ZWSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWSignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */,
-				ED04C0BD206E258D00A50813 /* ZWSignInViewModel.swift */,
+				184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				187090B6206B8C3D00431013 /* ViewController.swift in Sources */,
-				ED04C0BE206E258D00A50813 /* ZWSignInViewModel.swift in Sources */,
+				184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */,
 				187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */,
 				184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */,
 				ED04C0BC206E070200A50813 /* ZWLoginViewController.swift in Sources */,

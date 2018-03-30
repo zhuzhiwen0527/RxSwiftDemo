@@ -29,95 +29,23 @@
 
 import Foundation
 
-/**
- 
- `ValidationRuleLength` validates a `String`'s character count is greater than 
- or equal to a minimum, less than or equal to a maximum, or sits on or between 
- a minimum and maximum.
- 
- */
 public struct ValidationRuleLength: ValidationRule {
-
-    /**
-     
-     `String` text count type.
-
-     */
-    public enum LengthType {
-        case characters
-        case utf8
-        case utf16
-        case unicodeScalars
-    }
     
     public typealias InputType = String
-
-    public var error: Error
     
-    /**
-     
-     The minimum character count an input must have (default 0).
-     
-     */
     public let min: Int
-
-    /**
-     
-     The maximum character count an input must have (default Int.max).
-     
-     */
     public let max: Int
-
-    /**
-
-     The `String` text count type an input most have (default .characters).
-
-     */
-    public let lengthType: LengthType
-
-    /**
-     
-     Initializes a `ValidationRuleLength` with an optionally supplied minimum 
-     character count, an optionally supplied maximum character count, and an 
-     error describing a failed validation.
-     
-     - Parameters:
-        - min: A minimum character count an input must have (default 0).
-        - max: A maximum character count an input must have (default Int.max).
-        - lengthType: A `String` text count type an input most have (default .characters).
-        - error: An error describing a failed validation.
-     
-     */
-    public init(min: Int = 0, max: Int = Int.max, lengthType: LengthType = .characters, error: Error) {
+    public var failureError: ValidationErrorType
+    
+    public init(min: Int = 0, max: Int = Int.max, failureError: ValidationErrorType) {
         self.min = min
         self.max = max
-        self.lengthType = lengthType
-        self.error = error
+        self.failureError = failureError
     }
     
-    /**
-     
-     Validates the input.
-     
-     - Parameters:
-        - input: Input to validate.
-
-     - Returns:
-     true if the input character count is between the minimum and maximum.
-     
-     */
-    public func validate(input: String?) -> Bool {
+    public func validateInput(input: String?) -> Bool {
         guard let input = input else { return false }
-
-        let length: Int
-        switch lengthType {
-        case .characters: length = input.characters.count
-        case .utf8: length = input.utf8.count
-        case .utf16: length = input.utf16.count
-        case .unicodeScalars: length = input.unicodeScalars.count
-        }
-
-        return length >= min && length <= max
+        return input.characters.count >= min && input.characters.count <= max
     }
 
 }

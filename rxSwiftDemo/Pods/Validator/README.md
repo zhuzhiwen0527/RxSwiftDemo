@@ -1,39 +1,8 @@
 # Validator
 
-Validator is a user input validation library written in Swift. It's comprehensive, designed for extension, and leaves the UI up to you.
+Validator is a user input validation library written in Swift.
 
-Here's how you might validate an email address:
-
-```swift
-let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationError)
-"invalid@email,com".validate(emailRule) // -> .invalid(someValidationError)
-```
-
-... or that a user is over the age of 18:
-
-```swift
-let eighteenYearsAgo = Date().addingTimeInterval(-568024668)
-let drinkingAgeRule = ValidationRuleComparison<Date>(min: eighteenYearsAgo, error: someValidationError)
-let dateOfBirth = Date().addingTimeInterval(-662695446) // 21 years old
-dateOfBirth.validate(rule: rule) // -> .valid
-```
-
-... or that a number is within a specified range:
-
-```swift
-let numericRule = ValidationRuleComparison<Int>(min: 50, max: 100, error: someValidationError)
-42.validate(numericRule) // -> .invalid(someValidationError)
-```
-
-.. or that a text field contains a valid Visa or American Express card number:
-
-```swift
-let cardRule = ValidationRulePaymentCard(availableTypes: [.visa, .amex], error: someValidationError)
-paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationError) depending on what's in paymentCardTextField
-```
- 
-
-![demo-vid](resources/validator-example.mov.gif)
+![demo-vid](resources/demo.mp4.gif)
 
 ## Features
 
@@ -49,38 +18,34 @@ paymentCardTextField.validate(cardRule) // -> .valid or .invalid(someValidationE
   - [x] Condition (quickly write your own)
 - [x] Swift standard library type extensions with one API (not just strings!)
 - [x] UIKit element extensions
-- [x] Open validation error types
+- [x] Flexible validation error types
 - [x] An open protocol-oriented implementation
 - [x] Comprehensive test coverage
-- [x] Comprehensive code documentation
 
 ## Implementations
 
-- Swift 4: [master](https://github.com/adamwaite/Validator)
-- Swift 3.2: [2.1.1](https://github.com/adamwaite/Validator/releases/tag/v2.1.1)
-- Swift 2.3: [1.2.1](https://github.com/adamwaite/Validator/releases/tag/v1.2.1)
-- Objective-C: on the [objc branch](https://github.com/adamwaite/Validator/tree/objc)
+- The Swift 3 implementation is the actively maintained version on the [master branch](https://github.com/adamwaite/Validator), releases starting at version 2.0.
+- A Swift 2.3 implemtation is in version [1.2.1](https://github.com/adamwaite/Validator/releases/tag/v1.2.1).
+- The old Objective-C implementation is on the [objc branch](https://github.com/adamwaite/Validator/tree/objc).
 
 ## Installation
 
-### CocoaPods
-
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Validator.svg)](https://github.com/CocoaPods/CocoaPods) [![CocoaPods Compatible](https://img.shields.io/cocoapods/dt/Validator.svg)](https://github.com/CocoaPods/CocoaPods)
+Install Validator with [CocoaPods](http://cocoapods.org):
 
 `pod 'Validator'`
 
-### Carthage
-
- [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+Install Validator with [Carthage](https://github.com/Carthage/Carthage):
 
 `github "adamwaite/Validator"`
 
+*Note - Embedded frameworks require a minimum deployment target of iOS 8.*
+
 ## Usage
 
-`Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.valid` or `.invalid([Error])`.
+`Validator` can validate any `Validatable` type using one or multiple `ValidationRule`s. A validation operation returns a `ValidationResult` which matches either `.valid` or `.invalid([ValidationErrorType])`, where `ValidationErrorType` extends `ErrorType`.
 
 ```swift
-let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationErrorType)
+let rule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
 
 let result = "invalid@email,com".validate(rule: rule)
 // Note: the above is equivalent to Validator.validate(input: "invalid@email,com", rule: rule)
@@ -95,12 +60,12 @@ case .invalid(let failures): print(failures.first?.message)
 
 #### Required
 
-Validates a type exists (not-nil).
+Validates any type exists (not-nil).
 
 ```swift
-let stringRequiredRule = ValidationRuleRequired<String?>(error: someValidationErrorType)
+let stringRequiredRule = ValidationRuleRequired<String?>(failureError: someValidationErrorType)
 
-let floatRequiredRule = ValidationRuleRequired<Float?>(error: someValidationErrorType)
+let floatRequiredRule = ValidationRuleRequired<Float?>(failureError: someValidationErrorType)
 ```
 
 *Note - You can't use `validate` on an optional `Validatable` type (e.g. `myString?.validate(aRule...)` because the optional chaining mechanism will bypass the call. `"thing".validate(rule: aRule...)` is fine. To validate an optional for required in this way use: `Validator.validate(input: anOptional, rule: aRule)`.*
@@ -110,9 +75,9 @@ let floatRequiredRule = ValidationRuleRequired<Float?>(error: someValidationErro
 Validates an `Equatable` type is equal to another.
 
 ```swift
-let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", error: someValidationErrorType)
+let staticEqualityRule = ValidationRuleEquality<String>(target: "hello", failureError: someValidationErrorType)
 
-let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, error: someValidationErrorType)
+let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return textField.text ?? "" }, failureError: someValidationErrorType)
 ```
 
 #### Comparison
@@ -120,7 +85,7 @@ let dynamicEqualityRule = ValidationRuleEquality<String>(dynamicTarget: { return
 Validates a `Comparable` type against a maximum and minimum.
 
 ```swift
-let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, error: someValidationErrorType)
+let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, failureError: someValidationErrorType)
 ```
 
 #### Length
@@ -128,25 +93,23 @@ let comparisonRule = ValidationRuleComparison<Float>(min: 5, max: 7, error: some
 Validates a `String` length satisfies a minimum, maximum or range.
 
 ```swift
-let minLengthRule = ValidationRuleLength(min: 5, error: someValidationErrorType)
+let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
 
-let maxLengthRule = ValidationRuleLength(max: 5, error: someValidationErrorType)
+let maxLengthRule = ValidationRuleLength(max: 5, failureError: someValidationErrorType)
 
-let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, error: someValidationErrorType)
+let rangeLengthRule = ValidationRuleLength(min: 5, max: 10, failureError: someValidationErrorType)
 ```
 
 #### Pattern
 
-Validates a `String` against a pattern.
-
-`ValidationRulePattern` can be initialized with a `String` pattern or a type conforming to `ValidationPattern`. Validator provides some common patterns in the Patterns directory.
+Validates a `String` against a pattern. Validator provides some common patterns in the `ValidationPattern` enum.
 
 ```swift
-let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: someValidationErrorType)
+let emailRule = ValidationRulePattern(pattern: .EmailAddress, failureError: someValidationErrorType)
 
-let digitRule = ValidationRulePattern(pattern: ContainsNumberValidationPattern(), error: someValidationErrorType)
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
 
-let helloRule = ValidationRulePattern(pattern: ".*hello.*", error: someValidationErrorType)
+let helloRule = ValidationRulePattern(pattern: ".*hello.*", failureError: someValidationErrorType)
 ```
 
 #### Contains
@@ -154,9 +117,9 @@ let helloRule = ValidationRulePattern(pattern: ".*hello.*", error: someValidatio
 Validates an `Equatable` type is within a predefined `SequenceType`'s elements (where the `Element` of the `SequenceType` matches the input type).
 
 ```swift
-let stringContainsRule = ValidationRuleContains<String, [String]>(sequence: ["hello", "hi", "hey"], error: someValidationErrorType)
+let stringContainsRule = ValidationRuleContains<String, [String]>(sequence: ["hello", "hi", "hey"], failureError: someValidationErrorType)
 
-let rule = ValidationRuleContains<Int, [Int]>(sequence: [1, 2, 3], error: someValidationErrorType)
+let rule = ValidationRuleContains<Int, [Int]>(sequence: [1, 2, 3], failureError: someValidationErrorType)
 ```
 
 #### URL
@@ -164,7 +127,7 @@ let rule = ValidationRuleContains<Int, [Int]>(sequence: [1, 2, 3], error: someVa
 Validates a `String` to see if it's a valid URL conforming to RFC 2396.
 
 ```swift
-let urlRule = ValidationRuleURL(error: someValidationErrorType)
+let urlRule = ValidationRuleURL(failureError: someValidationErrorType)
 ```
 
 #### Payment Card
@@ -173,20 +136,20 @@ Validates a `String` to see if it's a valid payment card number by firstly runni
 
 ```swift
 public enum PaymentCardType: Int {
-    case amex, mastercard, visa, maestro, dinersClub, jcb, discover, unionPay
+    case Amex, Mastercard, Visa, Maestro, DinersClub, JCB, Discover, UnionPay
     ///...
 ```
 
 To be validate against any card type (just the Luhn check):
 
 ```swift
-let anyCardRule = ValidationRulePaymentCard(error: someValidationErrorType)
+let anyCardRule = ValidationRulePaymentCard(failureError: someValidationErrorType)
 ```
 
 To be validate against a set of accepted card types (e.g Visa, Mastercard and American Express in this example):
 
 ```swift
-let acceptedCardsRule = ValidationRulePaymentCard(acceptedTypes: [.visa, .mastercard, .amex], error: someValidationErrorType)
+let acceptedCardsRule = ValidationRulePaymentCard(acceptedTypes: [.Visa, .Mastercard, .Amex], failureError: someValidationErrorType)
 ```
 
 #### Condition
@@ -194,7 +157,7 @@ let acceptedCardsRule = ValidationRulePaymentCard(acceptedTypes: [.visa, .master
 Validates a `Validatable` type with a custom condition.
 
 ```swift
-let conditionRule = ValidationRuleCondition<[String]>(error: someValidationErrorType) { $0.contains("Hello") }
+let conditionRule = ValidationRuleCondition<[String]>(failureError: someValidationErrorType) { $0.contains("Hello") }
 ```
 
 #### Create Your Own
@@ -204,8 +167,8 @@ Create your own validation rules by conforming to the `ValidationRule` protocol:
 ```swift
 protocol ValidationRule {
     typealias InputType
-    func validate(input: InputType) -> Bool
-    var error: Error { get }
+    func validateInput(input: InputType) -> Bool
+    var failureError: ValidationErrorType { get }
 }
 ```
 
@@ -214,14 +177,14 @@ Example:
 ```swift
 struct HappyRule {
     typealias InputType = String
-    var error: ValidationError(message: "U mad?") }
-    func validate(input: String) -> Bool {
+    var failureError: ValidationError(message: "U mad?") }
+    func validateInput(input: String) -> Bool {
         return input == "😀"
     }
 }
 ```
 
-> If your custom rule doesn't already exist in the library and you think it might be useful for other people, then it'd be great if you added it in with a [pull request](https://github.com/adamwaite/Validator/pulls).
+> If your custom rule doesn't already exist in the library and you think it might be useful for other people, then it'd be great if you added it in with a [pull request](https://github.com/adamwaite/AJWValidator/pulls).
 
 ### Multiple Validation Rules (`ValidationRuleSet`)
 
@@ -230,10 +193,10 @@ Validation rules can be combined into a `ValidationRuleSet` containing a collect
 ```swift
 var passwordRules = ValidationRuleSet<String>()
 
-let minLengthRule = ValidationRuleLength(min: 5, error: someValidationErrorType)
+let minLengthRule = ValidationRuleLength(min: 5, failureError: someValidationErrorType)
 passwordRules.add(rule: minLengthRule)
 
-let digitRule = ValidationRulePattern(pattern: .ContainsDigit, error: someValidationErrorType)
+let digitRule = ValidationRulePattern(pattern: .ContainsDigit, failureError: someValidationErrorType)
 passwordRules.add(rule: digitRule)
 ```
 
@@ -275,28 +238,37 @@ let allResults = result1.merge(result2) // = ValidationResult.invalid([someError
 let allResultsAgain = ValidationResult.combine([result1, result2]) // = ValidationResult.invalid([someError1, someError2])
 ```
 
-### Errors
+### ValidationErrorType
 
-Initialize rules with any `Error` to be passed with the result on a failed vaildation.
-
-Example:
+The `ValidationErrorType` extends `ErrorType` and adds a message property for holding a validation error message. This means that they're compatible with [Swift 2 error handling](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html) and flexible for defining your own.
 
 ```swift
 struct User: Validatable {
 
     let email: String
 
-    enum ValidationErrors: String, Error {
-        case emailInvalid = "Email address is invalid"
+    enum ValidationErrors: String, ValidationErrorType {
+        case EmailInvalid = "Email address is invalid"
         var message { return self.rawValue }
     }
 
     func validate() -> ValidationResult {
-        let rule ValidationRulePattern(pattern: .emailAddress, error: ValidationErrors.emailInvalid)
+        let rule ValidationRulePattern(pattern: .EmailAddress, failureError: ValidationErrors.EmailInvalid)
         return email.validate(rule: rule)
     }
 }
 
+```
+
+Validator also ships with a basic `ValidationError` struct if you'd prefer to use that. It implements `ValidationErrorType`:
+
+```swift
+public struct ValidationError: ValidationErrorType {
+    public let message: String
+    public init(message m: String) {
+        message = m
+    }
+}
 ```
 
 ### Validating UIKit Elements
@@ -349,10 +321,10 @@ A `ValidatableInterfaceElement` can be configured to automatically validate when
 3. Begin observation:
 
     ```swift
-    textField.validateOnInputChange(enabled: true)
+    textField.validateOnInputChange(validationEnabled: true)
     ```
 
-Note - Use `.validateOnInputChange(enabled: false)` to end observation.
+Note - Use `.validateOnInputChange(validationEnabled: false)` to end observation.
 
 #### Extend UI Elements As Validatable
 
@@ -367,14 +339,14 @@ extension UITextField: ValidatableInterfaceElement {
 
     var inputValue: String { return text ?? "" }
 
-    func validateOnInputChange(enabled: Bool) {
+    func validateOnInputChange(validationEnabled: Bool) {
         switch validationEnabled {
-        case true: addTarget(self, action: #selector(validateInputChange), forControlEvents: .editingChanged)
-        case false: removeTarget(self, action: #selector(validateInputChange), forControlEvents: .editingChanged)
+        case true: addTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
+        case false: removeTarget(self, action: "validateInputChange:", forControlEvents: .EditingChanged)
         }
     }
 
-    @objc private func validateInputChange(_ sender: UITextField) {
+    @objc private func validateInputChange(sender: UITextField) {
         sender.validate()
     }
 
@@ -394,6 +366,10 @@ There's an example project in this repository.
 ## Contributing
 
 Any contributions and suggestions are most welcome! Please ensure any new code is covered with unit tests, and that all existing tests pass. Please update the README with any new features. Thanks!
+
+## Thanks
+
+- Thanks to [@jedmund](https://github.com/jedmund) for converting this project to Swift 3.
 
 ## Contact
 
