@@ -16,6 +16,8 @@
 		187090C9206B8C3D00431013 /* rxSwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090C8206B8C3D00431013 /* rxSwiftDemoTests.swift */; };
 		187090D4206B8C3D00431013 /* rxSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090D3206B8C3D00431013 /* rxSwiftDemoUITests.swift */; };
 		B77387D4A9C87B9BC9DE0525 /* Pods_rxSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B45D9018DFC31A303822E3 /* Pods_rxSwiftDemo.framework */; };
+		ED04C0BC206E070200A50813 /* ZWLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */; };
+		ED04C0BE206E258D00A50813 /* ZWSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04C0BD206E258D00A50813 /* ZWSignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		33B45D9018DFC31A303822E3 /* Pods_rxSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rxSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB93250AF533F78448E762E /* Pods-rxSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxSwiftDemo/Pods-rxSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DE92C2A5540CE8D4832D5558 /* Pods-rxSwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxSwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxSwiftDemo/Pods-rxSwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWLoginViewController.swift; sourceTree = "<group>"; };
+		ED04C0BD206E258D00A50813 /* ZWSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWSignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		184DF0E1206CB09F00AB1B1F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ED04C0BA206E06D300A50813 /* login */,
 				184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */,
 				187090B5206B8C3D00431013 /* ViewController.swift */,
 			);
@@ -166,6 +171,15 @@
 				33B45D9018DFC31A303822E3 /* Pods_rxSwiftDemo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED04C0BA206E06D300A50813 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */,
+				ED04C0BD206E258D00A50813 /* ZWSignInViewModel.swift */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,8 +368,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				187090B6206B8C3D00431013 /* ViewController.swift in Sources */,
+				ED04C0BE206E258D00A50813 /* ZWSignInViewModel.swift in Sources */,
 				187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */,
 				184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */,
+				ED04C0BC206E070200A50813 /* ZWLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

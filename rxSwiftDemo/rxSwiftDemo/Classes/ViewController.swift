@@ -127,12 +127,13 @@ class ViewController: UIViewController {
         //Rxcocoa Driver
         firstTextField.rx.text.orEmpty.asDriver().drive(lab.rx.text).disposed(by: rx.disposeBag)
         
-        firstTextField.rx.text.asDriver().drive(btn.rx.title()).disposed(by: rx.disposeBag)
+        firstTextField.rx.text.orEmpty.asDriver().drive(btn.rx.title()).disposed(by: rx.disposeBag)
         
         //点击事件
         
-        btn.rx.tap.subscribe(onNext: { (sender) in
-            print(sender)
+        btn.rx.tap.subscribe(onNext: {  x in
+           
+            print(x)
             
         }).disposed(by: rx.disposeBag)
         

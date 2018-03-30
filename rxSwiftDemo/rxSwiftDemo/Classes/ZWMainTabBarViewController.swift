@@ -10,12 +10,37 @@ import UIKit
 import CYLTabBarController
 class ZWMainTabBarViewController: CYLTabBarController {
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    static  func creatTabBarVC() -> ZWMainTabBarViewController {
+        
+        return ZWMainTabBarViewController(viewControllers: ZWMainTabBarViewController.viewControllers(), tabBarItemsAttributes: ZWMainTabBarViewController.tabBarItemsAttributesForController())
+    }
 
+
+   static func viewControllers() -> [UINavigationController] {
+        let first = UINavigationController(rootViewController: ViewController())
+        let second = UINavigationController(rootViewController: UIViewController())
+        
+        return[first,second]
+    }
+    
+
+    
+    static  func tabBarItemsAttributesForController() -> [[String:String]] {
+        let itemOne = [CYLTabBarItemTitle:"one",
+                       CYLTabBarItemImage:"xiaoxi",
+                       CYLTabBarItemSelectedImage:"xiaoxi-red"]
+        let itemTwo = [CYLTabBarItemTitle:"Two",
+                       CYLTabBarItemImage:"faxian",
+                       CYLTabBarItemSelectedImage:"faxian-red"]
+        return [itemOne,itemTwo]
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
