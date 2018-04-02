@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 import Validator
-
+import SVProgressHUD
 
 class ZWSignInViewModel {
     
@@ -27,8 +27,13 @@ class ZWSignInViewModel {
         
         
         validatedUsername = input.username.map({ usernameString  in
-            print("验证账号")
-            let usernameRule = ValidationRuleLength(min: 5, max: 20, failureError: ValidationError(message:"InValid Username"))
+            print("验证手机号码")
+            
+            let phoneNumberValidationPattern = ValidationPattern.PhoneNumber
+            
+//            let usernameRule = ValidationRuleLength(min: 5, max: 20, failureError: ValidationError(message:"InValid Username"))
+            let usernameRule = ValidationRulePattern(pattern: phoneNumberValidationPattern, failureError: ValidationError(message:"InValid Username"))
+            
             return usernameString.validate(rule: usernameRule)
         })
         
@@ -44,6 +49,7 @@ class ZWSignInViewModel {
         //判断是否账号密码 是否合法 是否正在请求网络
         signInEnabled = Driver.combineLatest(validatedUsername, validatedPassword,self.signingIn){username,password,signingIn in
             print("判断是否账号密码 是否合法 是否正在请求网络")
+   
             return username.isValid && password.isValid && !signingIn
         }
         

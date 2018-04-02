@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         /*
          
          */
-                rxOperators()
+//            rxOperators()
         
        
         
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
             $0.textAlignment = NSTextAlignment.center
             view.addSubview($0)
             $0.snp.makeConstraints({ (maker) in
-                maker.top.equalTo(view).offset(64)
+                maker.top.equalTo(view).offset(84)
                 maker.left.equalTo(view).offset(20)
                 maker.right.equalTo(view).offset(-20)
                 maker.height.equalTo(50)
@@ -107,6 +107,7 @@ class ViewController: UIViewController {
         }
         //加一个orEmpty 就可以不用强行解包
         let secondObservable = secondTextField.rx.text.orEmpty.filter {
+            
             $0.count >= 5
         }
         

@@ -20,7 +20,7 @@ class ZWLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let mainVC = ZWMainTabBarViewController.creatTabBarVC()
+
         view.backgroundColor = UIColor.white
         createUI()
         bindModel()
@@ -32,7 +32,8 @@ class ZWLoginViewController: UIViewController {
        accountNumberTextFiled = UITextField().then {
             $0.textColor = UIColor.black
             $0.placeholder = "输入账号"
-            $0.borderStyle = UITextBorderStyle.bezel
+            $0.borderStyle = UITextBorderStyle.line
+            $0.keyboardType = UIKeyboardType.numberPad
             $0.font = UIFont.systemFont(ofSize: 14)
             view.addSubview($0)
             $0.snp.makeConstraints({
@@ -50,7 +51,7 @@ class ZWLoginViewController: UIViewController {
             $0.textColor = UIColor.black
             $0.placeholder = "输入密码"
             $0.font = UIFont.systemFont(ofSize: 14)
-            $0.borderStyle = UITextBorderStyle.bezel
+            $0.borderStyle = UITextBorderStyle.line
             view.addSubview($0)
             $0.snp.makeConstraints({
                 $0.top.equalTo(accountNumberTextFiled.snp.bottom).offset(20)
@@ -62,7 +63,7 @@ class ZWLoginViewController: UIViewController {
         loginBtn = UIButton().then({
             
             $0.setTitle("登录", for: .normal)
-            $0.backgroundColor = UIColor.brown
+            $0.backgroundColor = UIColor.green
             $0.setTitleColor(UIColor.red, for: .normal)
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             $0.isEnabled = false
@@ -95,11 +96,26 @@ class ZWLoginViewController: UIViewController {
             .disposed(by: rx.disposeBag)
         
         viewModel.signedIn
-            .drive(onNext: { bool in
-                bool ? SVProgressHUD.showSuccess(withStatus: "登录成功") : SVProgressHUD.showError(withStatus: "登录失败")
+            .drive(onNext: {[weak self]  bool in
+                
+                if bool {
+                    
+                    SVProgressHUD.showSuccess(withStatus: "登录成功")
+                    self?.pushTabBarVC()
+                    
+                }else{
+                    SVProgressHUD.showError(withStatus: "登录失败")
+                }
+            
             })
             .disposed(by: rx.disposeBag)
     }
+    
+    func pushTabBarVC()  {
+        let mainVC = ZWMainTabBarViewController.creatTabBarVC()
+        UIApplication.shared.keyWindow?.rootViewController = mainVC
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

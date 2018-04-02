@@ -35,6 +35,7 @@ public enum ValidationPattern: String {
     case ContainsCapital = "^.*?[A-Z].*?$"
     case ContainsLowercase = "^.*?[a-z].*?$"
     case UKPostcode = "(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKPSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY]))))[ ]?[0-9][A-Z-[CIKMOV]]{2})"
+    case PhoneNumber = "^((13[0-9])|(15[^4,\\D]) |(17[0,0-9])|(18[0,0-9]))\\d{8}$"
 }
 
 public struct ValidationRulePattern: ValidationRule {
