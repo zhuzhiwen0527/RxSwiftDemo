@@ -8,11 +8,10 @@
 
 import UIKit
 import CYLTabBarController
+import SVProgressHUD
 class ZWLoginViewController: UIViewController {
 
     var accountNumberTextFiled:UITextField!
-    
-    var accountnumberLab:UILabel!
     
     var passWordTextFiled:UITextField!
     
@@ -24,7 +23,7 @@ class ZWLoginViewController: UIViewController {
 //        let mainVC = ZWMainTabBarViewController.creatTabBarVC()
         view.backgroundColor = UIColor.white
         createUI()
-        
+        bindModel()
     }
     
     
@@ -44,17 +43,7 @@ class ZWLoginViewController: UIViewController {
             })
  
         }
-       accountnumberLab = UILabel().then({
-            $0.textColor = UIColor.gray
-            $0.font = UIFont.systemFont(ofSize: 11)
-            $0.text = "请输入账号"
-            view.addSubview($0)
-            $0.snp.makeConstraints({ (make) in
-                make.top.equalTo((accountNumberTextFiled?.snp.bottom)!).offset(2)
-                make.left.right.equalTo(accountNumberTextFiled!)
-                make.height.equalTo(20)
-            })
-        })
+
         
         
         passWordTextFiled =  UITextField().then {
@@ -64,7 +53,7 @@ class ZWLoginViewController: UIViewController {
             $0.borderStyle = UITextBorderStyle.bezel
             view.addSubview($0)
             $0.snp.makeConstraints({
-                $0.top.equalTo(accountnumberLab.snp.bottom).offset(2)
+                $0.top.equalTo(accountNumberTextFiled.snp.bottom).offset(20)
                 $0.left.right.equalTo(accountNumberTextFiled!)
                 $0.height.equalTo(50)
             })
@@ -88,13 +77,37 @@ class ZWLoginViewController: UIViewController {
         
     }
     
-    
+    func bindModel(){
+        
+        let viewModel = ZWSignInViewModel(input: (username: accountNumberTextFiled.rx.text.orEmpty.asDriver(), password: passWordTextFiled.rx.text.orEmpty.asDriver(), signInTap: loginBtn.rx.tap.asDriver()))
+        
+        viewModel.signInEnabled
+            .drive(onNext: { [weak self] valid in
+                self?.loginBtn.alpha = valid ? 1.0 : 0.5
+                self?.loginBtn.isEnabled = valid
+            })
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.signingIn
+            .drive(onNext: { bool in
+                bool ? SVProgressHUD.show() : SVProgressHUD.dismiss()
+            })
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.signedIn
+            .drive(onNext: { bool in
+                bool ? SVProgressHUD.showSuccess(withStatus: "登录成功") : SVProgressHUD.showError(withStatus: "登录失败")
+            })
+            .disposed(by: rx.disposeBag)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 

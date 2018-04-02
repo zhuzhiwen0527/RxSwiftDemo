@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181743402071BA2B008DA819 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1817433F2071BA2B008DA819 /* ActivityIndicator.swift */; };
+		181743452071C8BB008DA819 /* Observable+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181743442071C8BB008DA819 /* Observable+ObjectMapper.swift */; };
+		181743492071D0F1008DA819 /* ZWNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181743482071D0F1008DA819 /* ZWNetworkTool.swift */; };
+		1817434B2071DDFB008DA819 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1817434A2071DDFB008DA819 /* userModel.swift */; };
 		184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */; };
 		184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */; };
 		187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090B3206B8C3D00431013 /* AppDelegate.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1817433F2071BA2B008DA819 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		181743442071C8BB008DA819 /* Observable+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ObjectMapper.swift"; sourceTree = "<group>"; };
+		181743482071D0F1008DA819 /* ZWNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWNetworkTool.swift; sourceTree = "<group>"; };
+		1817434A2071DDFB008DA819 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
 		184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWMainTabBarViewController.swift; sourceTree = "<group>"; };
 		184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWSignInViewModel.swift; sourceTree = "<group>"; };
 		187090B0206B8C3D00431013 /* rxSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +102,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		181743412071C6CF008DA819 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				181743442071C8BB008DA819 /* Observable+ObjectMapper.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		184DF0E1206CB09F00AB1B1F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +152,7 @@
 		187090B2206B8C3D00431013 /* rxSwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
+				181743412071C6CF008DA819 /* Extension */,
 				184DF0E4206CC0C300AB1B1F /* Resource */,
 				184DF0E1206CB09F00AB1B1F /* Classes */,
 				187090B3206B8C3D00431013 /* AppDelegate.swift */,
@@ -178,6 +195,9 @@
 			children = (
 				ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */,
 				184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */,
+				1817433F2071BA2B008DA819 /* ActivityIndicator.swift */,
+				181743482071D0F1008DA819 /* ZWNetworkTool.swift */,
+				1817434A2071DDFB008DA819 /* userModel.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -370,8 +390,12 @@
 				187090B6206B8C3D00431013 /* ViewController.swift in Sources */,
 				184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */,
 				187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */,
+				181743452071C8BB008DA819 /* Observable+ObjectMapper.swift in Sources */,
 				184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */,
+				181743402071BA2B008DA819 /* ActivityIndicator.swift in Sources */,
+				181743492071D0F1008DA819 /* ZWNetworkTool.swift in Sources */,
 				ED04C0BC206E070200A50813 /* ZWLoginViewController.swift in Sources */,
+				1817434B2071DDFB008DA819 /* userModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,4 +11,6 @@ pod 'Reusable', '~> 4.0.0'
 pod 'NSObject+Rx', '~> 4.2.0'
 pod 'CYLTabBarController', '~> 1.17.6'
 pod 'Validator'
+pod 'Moya/RxSwift'
+pod 'SVProgressHUD', '~> 2.2.2'
 end
