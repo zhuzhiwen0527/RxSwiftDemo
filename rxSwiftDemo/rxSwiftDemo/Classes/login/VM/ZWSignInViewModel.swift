@@ -31,7 +31,6 @@ class ZWSignInViewModel {
             
             let phoneNumberValidationPattern = ValidationPattern.PhoneNumber
             
-//            let usernameRule = ValidationRuleLength(min: 5, max: 20, failureError: ValidationError(message:"InValid Username"))
             let usernameRule = ValidationRulePattern(pattern: phoneNumberValidationPattern, failureError: ValidationError(message:"InValid Username"))
             
             return usernameString.validate(rule: usernameRule)
@@ -39,7 +38,7 @@ class ZWSignInViewModel {
         
         validatedPassword = input.password.map({ passwd in
             print("验证密码")
-            let passwdRule = ValidationRuleLength(min: 5, max: 20, failureError: ValidationError(message:"InValid Username"))
+            let passwdRule = ValidationRuleLength(min: 6, max: 20, failureError: ValidationError(message:"InValid Username"))
             return passwd.validate(rule: passwdRule)
         })
         
@@ -48,7 +47,7 @@ class ZWSignInViewModel {
         signingIn = signInIndicator.asDriver()
         //判断是否账号密码 是否合法 是否正在请求网络
         signInEnabled = Driver.combineLatest(validatedUsername, validatedPassword,self.signingIn){username,password,signingIn in
-            print("判断是否账号密码 是否合法 是否正在请求网络")
+          
    
             return username.isValid && password.isValid && !signingIn
         }

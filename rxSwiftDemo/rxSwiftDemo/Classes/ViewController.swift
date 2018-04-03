@@ -125,22 +125,24 @@ class ViewController: UIViewController {
         }).disposed(by: rx.disposeBag)
         
         
-        //Rxcocoa Driver
+        //Rxcocoa Driver UI绑定
         firstTextField.rx.text.orEmpty.asDriver().drive(lab.rx.text).disposed(by: rx.disposeBag)
         
         firstTextField.rx.text.orEmpty.asDriver().drive(btn.rx.title()).disposed(by: rx.disposeBag)
         
         //点击事件
-        
         btn.rx.tap.subscribe(onNext: {  x in
            
             print(x)
             
         }).disposed(by: rx.disposeBag)
         
-
-        
-        
+        let tapG = UITapGestureRecognizer()
+        tapG.rx.event.asObservable().subscribe {[weak self] in
+            self?.view.endEditing(true)
+            print($0)
+        }.disposed(by: rx.disposeBag)
+        view.addGestureRecognizer(tapG)
     }
     
     func rxObservable()  {

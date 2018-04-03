@@ -23,11 +23,11 @@ class User: Mappable {
     }
     
     func mapping(map: Map) {
-        accid        <- map["accid"]
-        code   <- map["code"]
-        msg       <- map["msg"]
-        usertoken <- map["usertoken"]
-        yuntoken     <- map["yuntoken"]
+        accid           <- map["accid"]
+        code            <- map["code"]
+        msg             <- map["msg"]
+        usertoken       <- map["usertoken"]
+        yuntoken        <- map["yuntoken"]
         
     }
 }
@@ -45,11 +45,11 @@ class userModel: Mappable {
     }
     
     func mapping(map: Map) {
-        msg       <- map["msg"]
-        code   <- map["code"]
-        status       <- map["status"]
-        success <- map["success"]
-        users <- map["data"]
+        msg         <- map["msg"]
+        code        <- map["code"]
+        status      <- map["status"]
+        success     <- map["success"]
+        users       <- map["data"]
         
     }
 }

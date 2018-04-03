@@ -23,62 +23,115 @@ class ZWLoginViewController: UIViewController {
 
         view.backgroundColor = UIColor.white
         createUI()
-        bindModel()
+        bindViewModel()
     }
     
     
     func createUI()  {
         
-       accountNumberTextFiled = UITextField().then {
-            $0.textColor = UIColor.black
-            $0.placeholder = "输入账号"
-            $0.borderStyle = UITextBorderStyle.line
-            $0.keyboardType = UIKeyboardType.numberPad
-            $0.font = UIFont.systemFont(ofSize: 14)
+        
+        let accountNumberLab = UILabel().then {
+            $0.textColor = UIColor.init(red: 51.0/255, green: 51.0/255, blue: 51.0/255, alpha: 1)
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.text = "账号"
             view.addSubview($0)
             $0.snp.makeConstraints({
-                $0.top.equalTo(view).offset(150)
                 $0.left.equalTo(view).offset(30)
+                $0.top.equalTo(view).offset(180)
+                $0.width.equalTo(40)
+                $0.height.equalTo(30)
+            })
+        }
+        
+       accountNumberTextFiled = UITextField().then {
+            $0.textColor = UIColor.init(red: 51.0/255, green: 51.0/255, blue: 51.0/255, alpha: 1)
+            $0.placeholder = "输入手机号"
+            $0.keyboardType = UIKeyboardType.numberPad
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.clearButtonMode = UITextFieldViewMode.whileEditing
+            view.addSubview($0)
+            $0.snp.makeConstraints({
+                $0.top.equalTo(accountNumberLab)
+                $0.left.equalTo(accountNumberLab.snp.right).offset(5)
                 $0.right.equalTo(view).offset(-30)
-                $0.height.equalTo(50)
+                $0.height.equalTo(30)
             })
  
         }
-
+        let _ = UIView().then {
+            $0.backgroundColor = UIColor.init(red: 91.0/255, green: 91.0/255, blue: 91.0/255, alpha: 1)
+            view.addSubview($0)
+            $0.snp.makeConstraints({
+                
+                $0.top.equalTo(accountNumberLab.snp.bottom).offset(1)
+                $0.left.equalTo(view).offset(30)
+                $0.right.equalTo(view).offset(-30)
+                $0.height.equalTo(0.5)
+            })
+        }
         
+        
+        let passWordLab = UILabel().then {
+            $0.textColor = UIColor.init(red: 51.0/255, green: 51.0/255, blue: 51.0/255, alpha: 1)
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.text = "密码"
+            view.addSubview($0)
+            $0.snp.makeConstraints({
+                $0.left.equalTo(accountNumberLab)
+                $0.top.equalTo(accountNumberLab.snp.bottom).offset(40)
+                $0.width.equalTo(40)
+                $0.height.equalTo(30)
+            })
+        }
         
         passWordTextFiled =  UITextField().then {
             $0.textColor = UIColor.black
             $0.placeholder = "输入密码"
-            $0.font = UIFont.systemFont(ofSize: 14)
-            $0.borderStyle = UITextBorderStyle.line
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.isSecureTextEntry = true
+            $0.clearButtonMode = UITextFieldViewMode.whileEditing
             view.addSubview($0)
             $0.snp.makeConstraints({
-                $0.top.equalTo(accountNumberTextFiled.snp.bottom).offset(20)
+                $0.top.equalTo(passWordLab)
                 $0.left.right.equalTo(accountNumberTextFiled!)
-                $0.height.equalTo(50)
+                $0.height.equalTo(30)
+            })
+        }
+        
+        let _ = UIView().then {
+            $0.backgroundColor = UIColor.init(red: 91.0/255, green: 91.0/255, blue: 91.0/255, alpha: 1)
+            view.addSubview($0)
+            $0.snp.makeConstraints({
+                
+                $0.top.equalTo(passWordLab.snp.bottom).offset(1)
+                $0.left.equalTo(view).offset(30)
+                $0.right.equalTo(view).offset(-30)
+                $0.height.equalTo(0.5)
             })
         }
         
         loginBtn = UIButton().then({
             
             $0.setTitle("登录", for: .normal)
-            $0.backgroundColor = UIColor.green
-            $0.setTitleColor(UIColor.red, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            $0.backgroundColor = UIColor.init(red: 243.0/255, green: 87.0/255, blue: 87.0/255, alpha: 1)
+            $0.setTitleColor(UIColor.white, for: .normal)
+            $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             $0.isEnabled = false
+            $0.layer.masksToBounds = true;
+            $0.layer.cornerRadius = 5
             view.addSubview($0)
             $0.snp.makeConstraints({
-                $0.top.equalTo(passWordTextFiled.snp.bottom).offset(20)
-                $0.left.right.equalTo(accountNumberTextFiled!)
-                $0.height.equalTo(60)
+                $0.top.equalTo(passWordTextFiled.snp.bottom).offset(30)
+                $0.left.equalTo(accountNumberLab)
+                $0.right.equalTo(accountNumberTextFiled!)
+                $0.height.equalTo(40)
             })
         })
         
         
     }
     
-    func bindModel(){
+    func bindViewModel(){
         
         let viewModel = ZWSignInViewModel(input: (username: accountNumberTextFiled.rx.text.orEmpty.asDriver(), password: passWordTextFiled.rx.text.orEmpty.asDriver(), signInTap: loginBtn.rx.tap.asDriver()))
         

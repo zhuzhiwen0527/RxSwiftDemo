@@ -18,25 +18,27 @@ class ZWMainTabBarViewController: CYLTabBarController {
     }
     
     static  func creatTabBarVC() -> ZWMainTabBarViewController {
+        let  tabBar = UITabBarItem.appearance()
+        tabBar.setTitleTextAttributes([.foregroundColor : UIColor.gray], for: .normal)
+        tabBar.setTitleTextAttributes([.foregroundColor : UIColor.red], for: .selected)
         
         return ZWMainTabBarViewController(viewControllers: ZWMainTabBarViewController.viewControllers(), tabBarItemsAttributes: ZWMainTabBarViewController.tabBarItemsAttributesForController())
     }
 
 
    static func viewControllers() -> [UINavigationController] {
-        let first = UINavigationController(rootViewController: ViewController())
-        let second = UINavigationController(rootViewController: UIViewController())
+        let baseVC = UINavigationController(rootViewController: ViewController())
+        let homeVC = UINavigationController(rootViewController: HomeViewController())
         
-        return[first,second]
+        return[homeVC,baseVC]
     }
     
-
     
     static  func tabBarItemsAttributesForController() -> [[String:String]] {
-        let itemOne = [CYLTabBarItemTitle:"one",
+        let itemOne = [CYLTabBarItemTitle:"首页",
                        CYLTabBarItemImage:"xiaoxi",
                        CYLTabBarItemSelectedImage:"xiaoxi-red"]
-        let itemTwo = [CYLTabBarItemTitle:"Two",
+        let itemTwo = [CYLTabBarItemTitle:"基础",
                        CYLTabBarItemImage:"faxian",
                        CYLTabBarItemSelectedImage:"faxian-red"]
         return [itemOne,itemTwo]

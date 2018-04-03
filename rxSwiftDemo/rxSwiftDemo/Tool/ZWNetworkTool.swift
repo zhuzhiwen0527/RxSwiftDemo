@@ -25,8 +25,11 @@ extension ZWNetworkTool:TargetType {
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     var path: String {
-        
-        return "tlogin/tlogin"
+        switch self {
+        case .user( _,  _):
+            return "tlogin/tlogin"
+        }
+      
         
     }
     

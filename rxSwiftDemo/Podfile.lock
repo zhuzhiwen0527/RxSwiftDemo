@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.6.0)
   - CYLTabBarController (1.17.6)
   - Differentiator (3.0.2)
+  - Kingfisher (4.6.1)
   - Moya/Core (10.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -31,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - CYLTabBarController (~> 1.17.6)
+  - Kingfisher (~> 4.6.1)
   - Moya/RxSwift
   - NSObject+Rx (~> 4.2.0)
   - ObjectMapper (~> 3.1.0)
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   CYLTabBarController: c374643dea6dadece8bdff9c70f7387f8ffd7d08
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
   NSObject+Rx: cbbc05e3cb3ad446cdbced3e00e39c9efaf02925
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
@@ -60,6 +63,6 @@ SPEC CHECKSUMS:
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: db3fae94b9af1f36e60d02d627f3c15f9bc699fa
+PODFILE CHECKSUM: 19e4dafd593a5910239d541f5ea62d8143423b7a
 
 COCOAPODS: 1.2.1

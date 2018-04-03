@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,7 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
        
-
+        
+        SVProgressHUD.setFont(UIFont.systemFont(ofSize: 14.0))
+        SVProgressHUD.setDefaultMaskType(.none)
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setMinimumSize(CGSize(width: 50, height: 50))
+        SVProgressHUD.setMinimumDismissTimeInterval(1.5)
         
         let loginVC = ZWLoginViewController()
         
@@ -25,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = loginVC
         self.window?.makeKeyAndVisible()
+        
         
         return true
     }
