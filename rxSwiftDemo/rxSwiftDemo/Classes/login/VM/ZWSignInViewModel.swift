@@ -38,7 +38,7 @@ class ZWSignInViewModel {
         
         validatedPassword = input.password.map({ passwd in
             print("验证密码")
-            let passwdRule = ValidationRuleLength(min: 6, max: 20, failureError: ValidationError(message:"InValid Username"))
+            let passwdRule = ValidationRuleLength(min: 0, max: 20, failureError: ValidationError(message:"InValid Username"))
             return passwd.validate(rule: passwdRule)
         })
         
@@ -58,9 +58,11 @@ class ZWSignInViewModel {
         signedIn = input.signInTap.withLatestFrom(usernameAndPassword).flatMapLatest({ (event) in
             
             print(event)
-            
+             UserDefaults.standard.setValue(event.0, forKey: "phone")
             return zwNetTool.rx.request(.user(username:event.0,password:event.1)).asObservable().mapObject(userModel.self).trackActivity(signInIndicator).map({model in
-                print("返回数据")
+                
+            
+                UserDefaults.standard.setValue(model.token, forKey: "token")
                 return model.code
             }).asDriver(onErrorJustReturn: false)
 

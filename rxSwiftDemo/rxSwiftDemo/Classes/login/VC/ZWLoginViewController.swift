@@ -49,6 +49,7 @@ class ZWLoginViewController: UIViewController {
             $0.keyboardType = UIKeyboardType.numberPad
             $0.font = UIFont.systemFont(ofSize: 15)
             $0.clearButtonMode = UITextFieldViewMode.whileEditing
+            $0.text =  (UserDefaults.standard.value(forKey: "phone") != nil) ? UserDefaults.standard.value(forKey: "phone") as! String :""
             view.addSubview($0)
             $0.snp.makeConstraints({
                 $0.top.equalTo(accountNumberLab)
