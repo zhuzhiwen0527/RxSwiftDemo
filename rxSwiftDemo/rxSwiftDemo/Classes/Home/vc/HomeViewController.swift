@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         cell.model = item
         return cell
     })
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -85,7 +85,7 @@ extension HomeViewController {
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             vmOutput.requestCommond.onNext(false)
         })
-        
+
        
     }
 }
@@ -94,7 +94,12 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let models =  self.viewModel.models.value
+        let m = models[indexPath.row]
+        return m.cellH
+    }
 }
 
 

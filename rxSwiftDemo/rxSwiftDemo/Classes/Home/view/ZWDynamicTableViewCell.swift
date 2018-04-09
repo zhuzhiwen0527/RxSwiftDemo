@@ -28,6 +28,7 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
             photoBrowser?.snp.updateConstraints({ (make) in
                 make.size.equalTo(model.imgVSize)
             })
+            
         }
     }
     
@@ -48,7 +49,6 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
 
         imgView = UIImageView().then({
             
-            $0.image = UIImage.init(named: "img.jpg")
             $0.layer.borderColor = UIColor.gray.cgColor
             $0.layer.borderWidth = 1.0
             self.contentView.addSubview($0)
@@ -85,14 +85,14 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
         })
         
         titleLab?.snp.makeConstraints { (make) in
-            make.top.equalTo(10)
+            make.top.equalTo(self.contentView).offset(12)
             make.left.equalTo((imgView?.snp.right)!).offset(11.5)
             make.right.equalTo(-10)
             make.height.equalTo(21)
         }
         
         timeLab?.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(-10)
+            make.bottom.equalTo(self.contentView).offset(-10)
             make.left.equalTo((imgView?.snp.right)!).offset(11.5)
             make.height.equalTo(20)
             make.right.equalTo(-10)
@@ -110,8 +110,6 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
             make.bottom.equalTo(photoBrowser!.snp.top).offset(-10)
         }
         
-    
-      
     }
 
     override func awakeFromNib() {

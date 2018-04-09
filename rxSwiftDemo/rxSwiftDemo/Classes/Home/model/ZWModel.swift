@@ -18,7 +18,22 @@ struct  ZWModel: HandyJSON {
     var id = ""
     var senderpic = ""
     var sendtime = ""
-
+    var contentH:CGFloat{
+        if content.count == 0 {
+            return 0.0
+        }
+        let font = UIFont.systemFont(ofSize: 15)
+        let rect = NSString(string: content.removingPercentEncoding!).boundingRect(with: CGSize(width: UIScreen.main.bounds.size.width-74.5, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        
+        return rect.height+10.0
+    }
+    
+    
+    var cellH:CGFloat{
+        
+        return imgVSize.height+12.0+21.0+contentH+20.0+20.0+5.0
+    }
+    
     
     var imgArrs:Array<String>{
         var imgs = imgurl.components(separatedBy: ",").map {
@@ -70,9 +85,10 @@ struct  ZWModel: HandyJSON {
         }
         
      
+        
     }
     
-    
+
     
     
     
