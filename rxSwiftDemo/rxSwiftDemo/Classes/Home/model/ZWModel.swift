@@ -18,17 +18,16 @@ struct  ZWModel: HandyJSON {
     var id = ""
     var senderpic = ""
     var sendtime = ""
-    var contentH:CGFloat{
-        
-        
-    }
+
     
     var imgArrs:Array<String>{
-        
-        return imgurl.components(separatedBy: ",").map {
+        var imgs = imgurl.components(separatedBy: ",").map {
             
             return "http://iyouwen-1.oss-cn-shanghai.aliyuncs.com/\($0)"
         }
+        imgs.removeLast()
+        
+        return imgs
     }
     var imgVSize:CGSize{
         
@@ -57,9 +56,10 @@ struct  ZWModel: HandyJSON {
             
             let imageCount = imgUrls.count-1;
             let perRowImageCount = ((imageCount == 4) ? 2 : 3);
-            let totalRowCount = ceil(Double(imageCount/perRowImageCount));
-            let rw = UIScreen.main.bounds.size.width-64.5-30-10
-            let h = rw/3.0
+            let totalRowCount = ceil(Float(imageCount)/Float(perRowImageCount));
+       
+            let rw = UIScreen.main.bounds.size.width-64.5
+            let h = (rw-40)/3.0
             let r = CGFloat(totalRowCount)
             let rh = r*(10+h);
             

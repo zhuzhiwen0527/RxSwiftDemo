@@ -24,9 +24,10 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
             titleLab?.text = model.sendername
             despLab?.text = model.content.removingPercentEncoding
             timeLab?.text = model.sendtime
-            
-            setNeedsLayout()
-            layoutIfNeeded()
+            photoBrowser?.createBtn(btnDataSource: model.imgArrs)
+            photoBrowser?.snp.updateConstraints({ (make) in
+                make.size.equalTo(model.imgVSize)
+            })
         }
     }
     
@@ -39,6 +40,7 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         setupUI()
     }
     
@@ -49,14 +51,14 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
             $0.image = UIImage.init(named: "img.jpg")
             $0.layer.borderColor = UIColor.gray.cgColor
             $0.layer.borderWidth = 1.0
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         })
 
         titleLab = UILabel().then ({
             
             $0.font = .systemFont(ofSize: 15)
             $0.textColor = .red
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         })
   
          despLab = UILabel().then {
@@ -64,26 +66,19 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
             $0.font = .systemFont(ofSize: 14)
             $0.textColor = .black
             $0.numberOfLines = 0
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         }
     
         timeLab = UILabel().then({
             $0.font = .systemFont(ofSize: 13)
             $0.textColor = UIColor(red: 51.0/255, green: 51.0/255, blue: 51.0/255, alpha: 1)
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         })
         
         photoBrowser = ZWPhotoBrowser()
-        photoBrowser?.backgroundColor = .red
-        self.addSubview(photoBrowser!)
+        
+        self.contentView.addSubview(photoBrowser!)
 
-   
-        
-    
-      
-    }
-    override func layoutSubviews() {
-        
         imgView?.snp.makeConstraints({ (make) in
             make.top.left.equalTo(12)
             make.width.height.equalTo(41)
@@ -106,7 +101,7 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
         photoBrowser?.snp.makeConstraints({ (make) in
             make.left.equalTo((imgView?.snp.right)!).offset(11.5)
             make.bottom.equalTo((timeLab?.snp.top)!).offset(-5)
-            make.size.equalTo(CGSize(width: 200, height: 100))
+            make.size.equalTo(model.imgVSize)
         })
         despLab?.snp.makeConstraints { (make) in
             make.top.equalTo(titleLab!.snp.bottom).offset(10)
@@ -114,7 +109,11 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
             make.right.equalTo(-10)
             make.bottom.equalTo(photoBrowser!.snp.top).offset(-10)
         }
+        
+    
+      
     }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

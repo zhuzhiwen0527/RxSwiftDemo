@@ -31,6 +31,9 @@ PODS:
   - SVProgressHUD (2.2.2)
   - Then (2.3.0)
   - Validator (3.0)
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
 
 DEPENDENCIES:
   - CYLTabBarController (~> 1.17.6)
@@ -48,6 +51,7 @@ DEPENDENCIES:
   - SVProgressHUD (~> 2.2.2)
   - Then (~> 2.3.0)
   - Validator
+  - YYCategories (~> 1.0.4)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -68,7 +72,8 @@ SPEC CHECKSUMS:
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: a84f15418ef5ea8779d753a687bc38b86dc873b6
+PODFILE CHECKSUM: f6626b4d4c96d164cdadd98d25761694928c1c1e
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0

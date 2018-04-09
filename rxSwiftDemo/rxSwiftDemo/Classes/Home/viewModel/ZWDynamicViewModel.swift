@@ -69,7 +69,7 @@ extension ZWDynamicViewModel:ZWViewModelType{
         
         output.requestCommond.subscribe(onNext: {[unowned self] isReloadData in
              self.index = isReloadData ? 0 : self.index+1
-            zwNetTool.rx.request(.dynamicData(token: UserDefaults.standard.value(forKey: "token") as! String, pagesize: "10", pageindex: "\(self.index)")).asObservable().mapArray(ZWModel.self).subscribe({ [weak self] (event) in
+            zwNetTool.rx.request(.dynamicData(token: UserDefaults.standard.value(forKey: "token") as! String, pagesize: "40", pageindex: "\(self.index)")).asObservable().mapArray(ZWModel.self).subscribe({ [weak self] (event) in
                 switch event {
                 case let .next(modelArr):
                    
