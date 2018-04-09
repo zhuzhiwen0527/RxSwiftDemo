@@ -11,10 +11,11 @@
 		181743452071C8BB008DA819 /* Observable+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181743442071C8BB008DA819 /* Observable+ObjectMapper.swift */; };
 		181743492071D0F1008DA819 /* ZWNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181743482071D0F1008DA819 /* ZWNetworkTool.swift */; };
 		1817434B2071DDFB008DA819 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1817434A2071DDFB008DA819 /* userModel.swift */; };
+		182BD45D207B5024006E0313 /* ZWViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD45C207B5024006E0313 /* ZWViewModelType.swift */; };
+		182BD45F207B6288006E0313 /* ZWPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD45E207B6288006E0313 /* ZWPhotoBrowser.swift */; };
 		184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */; };
 		184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */; };
 		18566289207473C5004D1389 /* ZWModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18566288207473C5004D1389 /* ZWModel.swift */; };
-		1856628B2074A06D004D1389 /* ZWWeitoutiaoNetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856628A2074A06D004D1389 /* ZWWeitoutiaoNetTool.swift */; };
 		187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090B3206B8C3D00431013 /* AppDelegate.swift */; };
 		187090B6206B8C3D00431013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090B5206B8C3D00431013 /* ViewController.swift */; };
 		187090B9206B8C3D00431013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187090B7206B8C3D00431013 /* Main.storyboard */; };
@@ -22,9 +23,9 @@
 		187090BE206B8C3D00431013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187090BC206B8C3D00431013 /* LaunchScreen.storyboard */; };
 		187090C9206B8C3D00431013 /* rxSwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090C8206B8C3D00431013 /* rxSwiftDemoTests.swift */; };
 		187090D4206B8C3D00431013 /* rxSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187090D3206B8C3D00431013 /* rxSwiftDemoUITests.swift */; };
+		18813E26207B40A600A7DF4D /* ZWDynamicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18813E25207B40A600A7DF4D /* ZWDynamicTableViewCell.swift */; };
+		18975E14207B339B00966209 /* ZWDynamicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18975E13207B339B00966209 /* ZWDynamicViewModel.swift */; };
 		18A40F5F20736C9100043A5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A40F5E20736C9100043A5E /* HomeViewController.swift */; };
-		18A40F6C2074698400043A5E /* ZWTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A40F6A2074698400043A5E /* ZWTableViewCell.swift */; };
-		18A40F6D2074698400043A5E /* ZWTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A40F6B2074698400043A5E /* ZWTableViewCell.xib */; };
 		B77387D4A9C87B9BC9DE0525 /* Pods_rxSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B45D9018DFC31A303822E3 /* Pods_rxSwiftDemo.framework */; };
 		ED04C0BC206E070200A50813 /* ZWLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04C0BB206E070200A50813 /* ZWLoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -51,10 +52,11 @@
 		181743442071C8BB008DA819 /* Observable+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ObjectMapper.swift"; sourceTree = "<group>"; };
 		181743482071D0F1008DA819 /* ZWNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWNetworkTool.swift; sourceTree = "<group>"; };
 		1817434A2071DDFB008DA819 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
+		182BD45C207B5024006E0313 /* ZWViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWViewModelType.swift; sourceTree = "<group>"; };
+		182BD45E207B6288006E0313 /* ZWPhotoBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWPhotoBrowser.swift; sourceTree = "<group>"; };
 		184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWMainTabBarViewController.swift; sourceTree = "<group>"; };
 		184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWSignInViewModel.swift; sourceTree = "<group>"; };
 		18566288207473C5004D1389 /* ZWModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWModel.swift; sourceTree = "<group>"; };
-		1856628A2074A06D004D1389 /* ZWWeitoutiaoNetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWWeitoutiaoNetTool.swift; sourceTree = "<group>"; };
 		187090B0206B8C3D00431013 /* rxSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187090B3206B8C3D00431013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187090B5206B8C3D00431013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,9 +70,9 @@
 		187090CF206B8C3D00431013 /* rxSwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rxSwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		187090D3206B8C3D00431013 /* rxSwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rxSwiftDemoUITests.swift; sourceTree = "<group>"; };
 		187090D5206B8C3D00431013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18813E25207B40A600A7DF4D /* ZWDynamicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWDynamicTableViewCell.swift; sourceTree = "<group>"; };
+		18975E13207B339B00966209 /* ZWDynamicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWDynamicViewModel.swift; sourceTree = "<group>"; };
 		18A40F5E20736C9100043A5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		18A40F6A2074698400043A5E /* ZWTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWTableViewCell.swift; sourceTree = "<group>"; };
-		18A40F6B2074698400043A5E /* ZWTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZWTableViewCell.xib; sourceTree = "<group>"; };
 		33B45D9018DFC31A303822E3 /* Pods_rxSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rxSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB93250AF533F78448E762E /* Pods-rxSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-rxSwiftDemo/Pods-rxSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DE92C2A5540CE8D4832D5558 /* Pods-rxSwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rxSwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rxSwiftDemo/Pods-rxSwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,9 +122,18 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		182BD45B207B4B45006E0313 /* prototol */ = {
+			isa = PBXGroup;
+			children = (
+				182BD45C207B5024006E0313 /* ZWViewModelType.swift */,
+			);
+			path = prototol;
+			sourceTree = "<group>";
+		};
 		184DF0E1206CB09F00AB1B1F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				182BD45B207B4B45006E0313 /* prototol */,
 				18A40F5D20736C5D00043A5E /* Home */,
 				ED04C0BA206E06D300A50813 /* login */,
 				184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */,
@@ -217,7 +228,6 @@
 		18A40F61207372B100043A5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				181743482071D0F1008DA819 /* ZWNetworkTool.swift */,
 				1817434A2071DDFB008DA819 /* userModel.swift */,
 			);
 			path = Model;
@@ -234,6 +244,7 @@
 		18A40F632073730700043A5E /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				181743482071D0F1008DA819 /* ZWNetworkTool.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -241,8 +252,8 @@
 		18A40F662074689F00043A5E /* view */ = {
 			isa = PBXGroup;
 			children = (
-				18A40F6A2074698400043A5E /* ZWTableViewCell.swift */,
-				18A40F6B2074698400043A5E /* ZWTableViewCell.xib */,
+				18813E25207B40A600A7DF4D /* ZWDynamicTableViewCell.swift */,
+				182BD45E207B6288006E0313 /* ZWPhotoBrowser.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 		18A40F67207468AC00043A5E /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				18975E13207B339B00966209 /* ZWDynamicViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -258,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				18566288207473C5004D1389 /* ZWModel.swift */,
-				1856628A2074A06D004D1389 /* ZWWeitoutiaoNetTool.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -399,7 +410,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18A40F6D2074698400043A5E /* ZWTableViewCell.xib in Resources */,
 				187090BE206B8C3D00431013 /* LaunchScreen.storyboard in Resources */,
 				187090BB206B8C3D00431013 /* Assets.xcassets in Resources */,
 				187090B9206B8C3D00431013 /* Main.storyboard in Resources */,
@@ -475,19 +485,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1856628B2074A06D004D1389 /* ZWWeitoutiaoNetTool.swift in Sources */,
 				187090B6206B8C3D00431013 /* ViewController.swift in Sources */,
 				184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */,
 				187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */,
 				181743452071C8BB008DA819 /* Observable+ObjectMapper.swift in Sources */,
+				182BD45F207B6288006E0313 /* ZWPhotoBrowser.swift in Sources */,
 				184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */,
 				18A40F5F20736C9100043A5E /* HomeViewController.swift in Sources */,
 				18566289207473C5004D1389 /* ZWModel.swift in Sources */,
+				182BD45D207B5024006E0313 /* ZWViewModelType.swift in Sources */,
 				181743402071BA2B008DA819 /* ActivityIndicator.swift in Sources */,
+				18813E26207B40A600A7DF4D /* ZWDynamicTableViewCell.swift in Sources */,
+				18975E14207B339B00966209 /* ZWDynamicViewModel.swift in Sources */,
 				181743492071D0F1008DA819 /* ZWNetworkTool.swift in Sources */,
 				ED04C0BC206E070200A50813 /* ZWLoginViewController.swift in Sources */,
 				1817434B2071DDFB008DA819 /* userModel.swift in Sources */,
-				18A40F6C2074698400043A5E /* ZWTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

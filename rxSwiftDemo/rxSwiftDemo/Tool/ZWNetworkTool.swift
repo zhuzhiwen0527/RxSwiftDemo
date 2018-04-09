@@ -12,7 +12,7 @@ import Moya
 enum ZWNetworkTool {
     // 18237100685  yw12345
     case user(username:String,password:String)
- 
+    case dynamicData(token:String,pagesize:String,pageindex:String)
 }
 extension ZWNetworkTool:TargetType {
     var headers: [String : String]? {
@@ -21,12 +21,9 @@ extension ZWNetworkTool:TargetType {
 
     /// The target's base `URL`.
     var baseURL: URL {
-        switch self {
-        case .user( _,  _):
-            return URL(string:"http://www.igewen.com/")!
+      
+        return URL(string:"http://www.igewen.com/")!
    
-        }
-     
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
@@ -34,7 +31,8 @@ extension ZWNetworkTool:TargetType {
         switch self {
         case .user( _,  _):
             return "app/login/check"
-       
+        case .dynamicData( _, _, _):
+            return "app/personal/queryBlog"
         }
         
     }
@@ -57,7 +55,8 @@ extension ZWNetworkTool:TargetType {
         switch self {
         case .user(let username, let password):
             return .requestParameters(parameters: ["phone":username,"pwd":password], encoding: URLEncoding.default)
-
+        case .dynamicData(let token, let pagesize,let pageindex):
+            return .requestParameters(parameters: ["token":token,"pagesize":pagesize,"pageindex":pageindex], encoding: URLEncoding.default)
         }
        
     }

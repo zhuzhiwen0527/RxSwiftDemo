@@ -32,9 +32,7 @@ extension Response {
         guard let jsonArr = (json["data"] as? [[String : Any]]) else {
             throw MoyaError.jsonMapping(self)
         }
-        
-      
-    
+
         return   jsonArr.flatMap {T.deserialize(from: $0)}
     }
 }

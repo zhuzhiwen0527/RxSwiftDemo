@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         
         let firstTextField = UITextField().then {
             $0.placeholder = "first"
-            $0.backgroundColor = UIColor.orange
+            $0.backgroundColor = .orange
             view.addSubview($0)
             
             $0.snp.makeConstraints({ (make) in
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         
         let secondTextField = UITextField().then {
             $0.placeholder = "second"
-            $0.backgroundColor = UIColor.orange
+            $0.backgroundColor = .orange
             view.addSubview($0)
             
             $0.snp.makeConstraints({ (make) in
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
         }
         
         let btn = UIButton().then {
-            $0.backgroundColor = UIColor.red
+            $0.backgroundColor = .red
             view.addSubview($0)
             $0.snp.makeConstraints({
                 

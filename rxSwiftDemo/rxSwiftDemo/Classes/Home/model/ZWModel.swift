@@ -10,7 +10,71 @@ import UIKit
 import HandyJSON
 import RxDataSources
 struct  ZWModel: HandyJSON {
+    var sendername = ""
+    var lat = ""
+    var lng = ""
+    var imgurl = ""
+    var content = ""
+    var id = ""
+    var senderpic = ""
+    var sendtime = ""
+    var contentH:CGFloat{
+        
+        
+    }
+    
+    var imgArrs:Array<String>{
+        
+        return imgurl.components(separatedBy: ",").map {
+            
+            return "http://iyouwen-1.oss-cn-shanghai.aliyuncs.com/\($0)"
+        }
+    }
+    var imgVSize:CGSize{
+        
+        let imgUrls = imgurl.components(separatedBy: ",")
+    
+        if imgUrls.count == 2 {
+            
+            
+            let arr = imgUrls[0].components(separatedBy: "hhh")
+            if arr.count == 1{ return CGSize(width: 0, height: 0)}
+            let arr1 = arr[1].components(separatedBy: "kkk")
+            let w = (arr1[0] as NSString).floatValue
+            let h = (arr1[1] as NSString).floatValue
+            var rw:Float = 0.0
  
+            if (w < h) {
+                rw = 124.0;
+                
+            }else{
+                rw = 171.0;
+            }
+                let rh = (rw*h/w)+10
+            return CGSize(width: CGFloat(rw), height: CGFloat(rh))
+            
+        }else if imgUrls.count>2 {
+            
+            let imageCount = imgUrls.count-1;
+            let perRowImageCount = ((imageCount == 4) ? 2 : 3);
+            let totalRowCount = ceil(Double(imageCount/perRowImageCount));
+            let rw = UIScreen.main.bounds.size.width-64.5-30-10
+            let h = rw/3.0
+            let r = CGFloat(totalRowCount)
+            let rh = r*(10+h);
+            
+            return CGSize(width: rw, height: rh)
+        }else{
+            
+            return CGSize(width: 0, height: 0)
+        }
+        
+     
+    }
+    
+    
+    
+    
     
 }
 /* ============================= SectionModel =============================== */

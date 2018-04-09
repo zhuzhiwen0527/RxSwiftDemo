@@ -32,7 +32,7 @@ class ZWLoginViewController: UIViewController {
         
         let accountNumberLab = UILabel().then {
             $0.textColor = UIColor.init(red: 51.0/255, green: 51.0/255, blue: 51.0/255, alpha: 1)
-            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.font = .systemFont(ofSize: 15)
             $0.text = "账号"
             view.addSubview($0)
             $0.snp.makeConstraints({
@@ -46,9 +46,9 @@ class ZWLoginViewController: UIViewController {
        accountNumberTextFiled = UITextField().then {
             $0.textColor = UIColor.init(red: 51.0/255, green: 51.0/255, blue: 51.0/255, alpha: 1)
             $0.placeholder = "输入手机号"
-            $0.keyboardType = UIKeyboardType.numberPad
-            $0.font = UIFont.systemFont(ofSize: 15)
-            $0.clearButtonMode = UITextFieldViewMode.whileEditing
+            $0.keyboardType = .numberPad
+            $0.font = .systemFont(ofSize: 15)
+            $0.clearButtonMode = .whileEditing
             $0.text =  (UserDefaults.standard.value(forKey: "phone") != nil) ? UserDefaults.standard.value(forKey: "phone") as! String :""
             view.addSubview($0)
             $0.snp.makeConstraints({
@@ -74,7 +74,7 @@ class ZWLoginViewController: UIViewController {
         
         let passWordLab = UILabel().then {
             $0.textColor = UIColor.init(red: 51.0/255, green: 51.0/255, blue: 51.0/255, alpha: 1)
-            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.font = .systemFont(ofSize: 15)
             $0.text = "密码"
             view.addSubview($0)
             $0.snp.makeConstraints({
@@ -86,11 +86,11 @@ class ZWLoginViewController: UIViewController {
         }
         
         passWordTextFiled =  UITextField().then {
-            $0.textColor = UIColor.black
+            $0.textColor = .black
             $0.placeholder = "输入密码"
-            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.font = .systemFont(ofSize: 15)
             $0.isSecureTextEntry = true
-            $0.clearButtonMode = UITextFieldViewMode.whileEditing
+            $0.clearButtonMode = .whileEditing
             view.addSubview($0)
             $0.snp.makeConstraints({
                 $0.top.equalTo(passWordLab)
@@ -116,7 +116,7 @@ class ZWLoginViewController: UIViewController {
             $0.setTitle("登录", for: .normal)
             $0.backgroundColor = UIColor.init(red: 243.0/255, green: 87.0/255, blue: 87.0/255, alpha: 1)
             $0.setTitleColor(UIColor.white, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+            $0.titleLabel?.font = .systemFont(ofSize: 17)
             $0.isEnabled = false
             $0.layer.masksToBounds = true;
             $0.layer.cornerRadius = 5

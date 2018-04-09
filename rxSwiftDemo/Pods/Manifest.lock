@@ -26,6 +26,7 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.1.1)
+  - SKPhotoBrowser (5.0.3)
   - SnapKit (4.0.0)
   - SVProgressHUD (2.2.2)
   - Then (2.3.0)
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - RxCocoa (~> 4.1.1)
   - RxDataSources (~> 3.0.2)
   - RxSwift (~> 4.1.1)
+  - SKPhotoBrowser
   - SnapKit (~> 4.0.0)
   - SVProgressHUD (~> 2.2.2)
   - Then (~> 2.3.0)
@@ -61,11 +63,12 @@ SPEC CHECKSUMS:
   RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
+  SKPhotoBrowser: 6de77f7004442e79059f19d86e2e7e6a03b43a13
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
 
-PODFILE CHECKSUM: edb69a68b81f7fea9349bce33f6e7b96ed99a146
+PODFILE CHECKSUM: a84f15418ef5ea8779d753a687bc38b86dc873b6
 
 COCOAPODS: 1.2.1
