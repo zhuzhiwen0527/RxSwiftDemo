@@ -18,10 +18,13 @@ struct  ZWModel: HandyJSON {
     var id = ""
     var senderpic = ""
     var sendtime = ""
+    var senderIcon:String{
+        
+        return "http://iyouwen-1.oss-cn-shanghai.aliyuncs.com/\(senderpic)"
+    }
+    
     var contentH:CGFloat{
-        if content.count == 0 {
-            return 0.0
-        }
+  
         let font = UIFont.systemFont(ofSize: 15)
         let rect = NSString(string: content.removingPercentEncoding!).boundingRect(with: CGSize(width: UIScreen.main.bounds.size.width-74.5, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
         

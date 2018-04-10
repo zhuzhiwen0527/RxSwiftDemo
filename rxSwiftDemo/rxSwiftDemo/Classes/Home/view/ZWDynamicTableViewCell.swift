@@ -20,7 +20,7 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
     var model = ZWModel(){
         didSet{
             
-            imgView?.kf.setImage(with: URL(string: "http://iyouwen-1.oss-cn-shanghai.aliyuncs.com/\(model.senderpic)"))
+            imgView?.kf.setImage(with: URL(string:model.senderIcon))
             titleLab?.text = model.sendername
             despLab?.text = model.content.removingPercentEncoding
             timeLab?.text = model.sendtime
@@ -51,6 +51,8 @@ class ZWDynamicTableViewCell: UITableViewCell,Reusable {
             
             $0.layer.borderColor = UIColor.gray.cgColor
             $0.layer.borderWidth = 1.0
+            $0.layer.masksToBounds = true
+            $0.contentMode = .scaleAspectFill
             self.contentView.addSubview($0)
         })
 

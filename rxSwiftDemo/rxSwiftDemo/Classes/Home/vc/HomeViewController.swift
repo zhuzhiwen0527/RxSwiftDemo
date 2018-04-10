@@ -57,21 +57,17 @@ extension HomeViewController {
   
         
         
-        let vmInput = ZWDynamicViewModel.ZWInput()
+        let vmInput = ZWDynamicViewModel.ZWInput(name: "zzw")
         let vmOutput = viewModel.transform(input: vmInput)
         
         vmOutput.sections.asDriver().drive(tableView.rx.items(dataSource: dataSource)).disposed(by: rx.disposeBag)
+        
         vmOutput.requestCommond.onNext(true)
+        
         vmOutput.refreshStatus.asObservable().subscribe(onNext: {[weak self] status in
             switch status {
-            case .beingHeaderRefresh:
-                self?.tableView.mj_header.beginRefreshing()
-            case .endHeaderRefresh:
+            case .endRefresh:
                 self?.tableView.mj_header.endRefreshing()
-            case .beingFooterRefresh:
-                self?.tableView.mj_footer.beginRefreshing()
-            case .endFooterRefresh:
-                self?.tableView.mj_footer.endRefreshing()
             case .noMoreData:
                 self?.tableView.mj_footer.endRefreshingWithNoMoreData()
             default:

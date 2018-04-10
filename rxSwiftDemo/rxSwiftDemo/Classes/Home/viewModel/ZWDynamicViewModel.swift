@@ -13,10 +13,7 @@ import RxCocoa
 
 enum ZWRefreshStatus {
     case none
-    case beingHeaderRefresh
-    case endHeaderRefresh
-    case beingFooterRefresh
-    case endFooterRefresh
+    case endRefresh
     case noMoreData
 }
 
@@ -36,11 +33,13 @@ extension ZWDynamicViewModel:ZWViewModelType{
     typealias Output = ZWOutput
     
     struct ZWInput {
-        // 网络请求类型
-       
+        // 传递参数
         
-        init() {
-       
+        var name = ""
+        
+        
+        init(name:String) {
+            self.name = name
         }
     }
     
@@ -64,21 +63,23 @@ extension ZWDynamicViewModel:ZWViewModelType{
             return [ZWSection(items: models)]
             }.asDriver(onErrorJustReturn: [])
         
+        print(input.name)
         
         let output = ZWOutput(sections: sections)
         
         output.requestCommond.subscribe(onNext: {[unowned self] isReloadData in
-             self.index = isReloadData ? 0 : self.index+1
+               self.index = isReloadData ? 0 : self.index+1
             zwNetTool.rx.request(.dynamicData(token: UserDefaults.standard.value(forKey: "token") as! String, pagesize: "40", pageindex: "\(self.index)")).asObservable().mapArray(ZWModel.self).subscribe({ [weak self] (event) in
                 switch event {
                 case let .next(modelArr):
-                   
-                    self?.models.value = isReloadData ? modelArr : (self?.models.value ?? []) + modelArr
-                  
-                case .error(_):break
-               
-                case .completed:
-                output.refreshStatus.value = isReloadData ? .endHeaderRefresh : .endFooterRefresh
+             
+                self?.models.value = isReloadData ? modelArr : (self?.models.value ?? []) + modelArr
+                modelArr.count == 0 ? (output.refreshStatus.value = .noMoreData) :  (output.refreshStatus.value = .endRefresh)
+                
+                case .error(_):
+                output.refreshStatus.value = .endRefresh
+                case .completed:break
+           
                 }
             }).disposed(by: self.rx.disposeBag)
         }).disposed(by: rx.disposeBag)
