@@ -1,3 +1,5 @@
+source 'https://gitee.com/zzwAmbition/ZZWSpecs.git'  #我们自己的私有spec仓库的地址
+source 'https://github.com/CocoaPods/Specs.git' 
 platform :ios, '8.0'
 use_frameworks!
 target ‘rxSwiftDemo’ do
@@ -17,4 +19,5 @@ pod 'MJRefresh', '~> 3.1.15.1'
 pod 'HandyJSON', '~>4.0.0-beta.1'
 pod 'SKPhotoBrowser'
 pod 'YYCategories', '~> 1.0.4'
+pod 'ZWCalendarView', '~> 0.1.0'
 end

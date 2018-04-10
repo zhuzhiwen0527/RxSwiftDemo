@@ -13,6 +13,7 @@
 		1817434B2071DDFB008DA819 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1817434A2071DDFB008DA819 /* userModel.swift */; };
 		182BD45D207B5024006E0313 /* ZWViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD45C207B5024006E0313 /* ZWViewModelType.swift */; };
 		182BD45F207B6288006E0313 /* ZWPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD45E207B6288006E0313 /* ZWPhotoBrowser.swift */; };
+		18325A6A207C69C6009E6E04 /* ZWCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18325A69207C69C6009E6E04 /* ZWCalendarViewController.swift */; };
 		184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */; };
 		184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */; };
 		18566289207473C5004D1389 /* ZWModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18566288207473C5004D1389 /* ZWModel.swift */; };
@@ -54,6 +55,7 @@
 		1817434A2071DDFB008DA819 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
 		182BD45C207B5024006E0313 /* ZWViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWViewModelType.swift; sourceTree = "<group>"; };
 		182BD45E207B6288006E0313 /* ZWPhotoBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWPhotoBrowser.swift; sourceTree = "<group>"; };
+		18325A69207C69C6009E6E04 /* ZWCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWCalendarViewController.swift; sourceTree = "<group>"; };
 		184DF0E2206CB18800AB1B1F /* ZWMainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWMainTabBarViewController.swift; sourceTree = "<group>"; };
 		184DF0E6206E446500AB1B1F /* ZWSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWSignInViewModel.swift; sourceTree = "<group>"; };
 		18566288207473C5004D1389 /* ZWModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZWModel.swift; sourceTree = "<group>"; };
@@ -130,9 +132,18 @@
 			path = prototol;
 			sourceTree = "<group>";
 		};
+		18325A68207C69A5009E6E04 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				18325A69207C69C6009E6E04 /* ZWCalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		184DF0E1206CB09F00AB1B1F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				18325A68207C69A5009E6E04 /* Calendar */,
 				182BD45B207B4B45006E0313 /* prototol */,
 				18A40F5D20736C5D00043A5E /* Home */,
 				ED04C0BA206E06D300A50813 /* login */,
@@ -517,7 +528,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -530,6 +541,7 @@
 				187090B6206B8C3D00431013 /* ViewController.swift in Sources */,
 				184DF0E7206E446500AB1B1F /* ZWSignInViewModel.swift in Sources */,
 				187090B4206B8C3D00431013 /* AppDelegate.swift in Sources */,
+				18325A6A207C69C6009E6E04 /* ZWCalendarViewController.swift in Sources */,
 				181743452071C8BB008DA819 /* Observable+ObjectMapper.swift in Sources */,
 				182BD45F207B6288006E0313 /* ZWPhotoBrowser.swift in Sources */,
 				184DF0E3206CB18800AB1B1F /* ZWMainTabBarViewController.swift in Sources */,

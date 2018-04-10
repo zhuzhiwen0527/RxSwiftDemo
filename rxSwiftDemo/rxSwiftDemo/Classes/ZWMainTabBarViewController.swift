@@ -29,8 +29,8 @@ class ZWMainTabBarViewController: CYLTabBarController {
    static func viewControllers() -> [UINavigationController] {
         let baseVC = UINavigationController(rootViewController: ViewController())
         let homeVC = UINavigationController(rootViewController: HomeViewController())
-        
-        return[homeVC,baseVC]
+        let calendar = UINavigationController(rootViewController: ZWCalendarViewController())
+        return[homeVC,baseVC,calendar]
     }
     
     
@@ -41,7 +41,10 @@ class ZWMainTabBarViewController: CYLTabBarController {
         let itemTwo = [CYLTabBarItemTitle:"基础",
                        CYLTabBarItemImage:"faxian",
                        CYLTabBarItemSelectedImage:"faxian-red"]
-        return [itemOne,itemTwo]
+        let itemThree = [CYLTabBarItemTitle:"日历",
+                       CYLTabBarItemImage:"faxian",
+                       CYLTabBarItemSelectedImage:"faxian-red"]
+        return [itemOne,itemTwo,itemThree]
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

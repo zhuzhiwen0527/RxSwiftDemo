@@ -34,6 +34,7 @@ PODS:
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
+  - ZWCalendarView (0.1.0)
 
 DEPENDENCIES:
   - CYLTabBarController (~> 1.17.6)
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - Then (~> 2.3.0)
   - Validator
   - YYCategories (~> 1.0.4)
+  - ZWCalendarView (~> 0.1.0)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -73,7 +75,8 @@ SPEC CHECKSUMS:
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
   Validator: 7d9828daffabc757604603052e407f208fa9b6d5
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
+  ZWCalendarView: b41e013547e387c059c8e4bfaf59d6a9361b2c21
 
-PODFILE CHECKSUM: f6626b4d4c96d164cdadd98d25761694928c1c1e
+PODFILE CHECKSUM: 4ad5306f57640ff568c6c8750332f04f78f34a41
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.2.1
