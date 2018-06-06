@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.6.0)
   - CYLTabBarController (1.17.6)
   - Differentiator (3.0.2)
-  - HandyJSON (4.0.0-beta.1)
+  - HandyJSON (4.1.1)
   - Kingfisher (4.6.1)
   - MJRefresh (3.1.15.1)
   - Moya/Core (10.0.1):
@@ -11,7 +11,7 @@ PODS:
   - Moya/RxSwift (10.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - NSObject+Rx (4.2.0):
+  - "NSObject+Rx (4.2.0)":
     - RxSwift (~> 4.0)
   - Result (3.2.4)
   - Reusable (4.0.0):
@@ -38,11 +38,11 @@ PODS:
 
 DEPENDENCIES:
   - CYLTabBarController (~> 1.17.6)
-  - HandyJSON (~> 4.0.0-beta.1)
+  - HandyJSON (~> 4.1.1)
   - Kingfisher (~> 4.6.1)
   - MJRefresh (~> 3.1.15.1)
   - Moya/RxSwift
-  - NSObject+Rx (~> 4.2.0)
+  - "NSObject+Rx (~> 4.2.0)"
   - Reusable (~> 4.0.0)
   - RxCocoa (~> 4.1.1)
   - RxDataSources (~> 3.0.2)
@@ -55,15 +55,39 @@ DEPENDENCIES:
   - YYCategories (~> 1.0.4)
   - ZWCalendarView (~> 0.1.0)
 
+SPEC REPOS:
+  https://gitee.com/zzwAmbition/ZZWSpecs.git:
+    - ZWCalendarView
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CYLTabBarController
+    - Differentiator
+    - HandyJSON
+    - Kingfisher
+    - MJRefresh
+    - Moya
+    - "NSObject+Rx"
+    - Result
+    - Reusable
+    - RxCocoa
+    - RxDataSources
+    - RxSwift
+    - SKPhotoBrowser
+    - SnapKit
+    - SVProgressHUD
+    - Then
+    - Validator
+    - YYCategories
+
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   CYLTabBarController: c374643dea6dadece8bdff9c70f7387f8ffd7d08
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
-  HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
+  HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
   Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
-  NSObject+Rx: cbbc05e3cb3ad446cdbced3e00e39c9efaf02925
+  "NSObject+Rx": cbbc05e3cb3ad446cdbced3e00e39c9efaf02925
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   Reusable: 98e5fff1e0e2e00872199699b276dde08ee56c07
   RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
@@ -77,6 +101,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   ZWCalendarView: b41e013547e387c059c8e4bfaf59d6a9361b2c21
 
-PODFILE CHECKSUM: 4ad5306f57640ff568c6c8750332f04f78f34a41
+PODFILE CHECKSUM: 10d853967fe9156b2d3fb9c629fbff8d969c6baa
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3

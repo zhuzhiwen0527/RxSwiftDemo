@@ -45,6 +45,7 @@ extension ObservableType where E == Response {
         return flatMap { response -> Observable<T> in
             print("发起网络请求")
             print(response)
+            
             return Observable.just(try response.mapObject(T.self))
         }
     }
